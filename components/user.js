@@ -1,6 +1,6 @@
 let users = [
   {
-    email: "nailazukanovic@gmail.com",
+    username: "naila",
     password: "naila"
   }
 ]

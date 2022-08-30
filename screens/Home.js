@@ -39,7 +39,11 @@ const logout = () => {
         <Icon name="logout" size={25} onPress= {logout}/>
 
       </View>  
-
+      <View style={{marginTop: 29, flexDirection: 'row'}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Usluge')}>
+          <Text style={{fontSize: 19, fontWeight: 'bold'}}>Vidite usluge</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList keyboardShouldPersistTaps='always'
       columnWrapperStyle={{justifyContent:'space-between'}}
       showsVerticalScrollIndicator={false}

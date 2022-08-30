@@ -3,24 +3,27 @@ import {Alert, StyleSheet, View, Text, TextInput, Image , TouchableOpacity} from
 import users from '../components/user';
 const Register = ({navigation}) => {
     const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
 
+
+
+    
 
 
     function register(){
-      if(email === '' || password === '')
+      if(username === '' || password === '')
       {
         Alert.alert('Upozorenje:', 'Niste popunili sva neophodna polja');
           return;
       }
-      if(users.find((user) => user.email === email?.trim() && user.password === password?.trim()))
+      if(users.find((user) => user.username === username?.trim() && user.password === password?.trim()))
       {
         Alert.alert("Greska", "User already exists");
         return;
       }
       else
       {
-        users.push({email, password});
+        users.push({username, password});
 
       }
     }
@@ -29,7 +32,7 @@ const Register = ({navigation}) => {
   return(
     <View style={styles.container}>
       <View style={styles.inputView} >
-      <TextInput style={styles.TextInput} placeholder="EMAIL" placeholderTextColor="#003F5C" value={email} onChangeText={(text) => setEmail(text)}/>
+      <TextInput style={styles.TextInput} placeholder="USERNAME" placeholderTextColor="#003F5C" value={username} onChangeText={(text) => setUsername(text)}/>
       </View>
       <View style={styles.inputView} >
       <TextInput style={styles.TextInput} placeholder="PASSWORD" placeholderTextColor="#003F5C" value={password} secureTextEntry={true} onChangeText={(text) => setPassword(text)}/>

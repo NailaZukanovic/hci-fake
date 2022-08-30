@@ -4,23 +4,38 @@ import { useDispatch } from 'react-redux';
 import {userLogin} from '../redux/actions';
 
 export default Login = ({navigation}) => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('')
 
+  const validateEmail = (email) => {
+    var re = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
+      return re.test(email);
+  };
+ 
+  const validatePassword = (password) => {
+    var re = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
+      return re.test(password);
+  }
   const dispatch = useDispatch();
   const login = () => {
-    if(email === '' || password === '')
+    if(username === '' || password === '')
     {
       Alert.alert('Upozorenje:', 'Niste popunili sva neophodna polja');
         return;
     }
-    dispatch(userLogin(email, password))
+
+    // if(!validateEmail(email))
+    // {
+    //   Alert.alert('Upozorenje', 'Unesite email');
+    //   return;
+    // }
+    dispatch(userLogin(username, password))
   }
   return(
     <View style={styles.container}>
       <Image style={styles.image} source={require('../assets/logo.jpg')}/>
       <View style={styles.inputView} >
-      <TextInput style={styles.TextInput} placeholder="EMAIL" placeholderTextColor="#003F5C" value={email} onChangeText={(text) => setEmail(text)}/>
+      <TextInput style={styles.TextInput} placeholder="USERNAME" placeholderTextColor="#003F5C" value={username} onChangeText={(text) => setUsername(text)}/>
       </View>
       <View style={styles.inputView} >
       <TextInput style={styles.TextInput} placeholder="PASSWORD" placeholderTextColor="#003F5C" value={password} secureTextEntry={true} onChangeText={(text) => setPassword(text)}/>

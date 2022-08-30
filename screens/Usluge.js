@@ -49,6 +49,11 @@ const logout = () => {
         <Icon name="logout" size={25} onPress= {logout}/>
       </View>
 
+      <View style={{marginTop: 29, flexDirection: 'row'}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Text style={{fontSize: 19, fontWeight: 'bold'}}>Vidite producte</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList keyboardShouldPersistTaps='always'
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{marginTop: 10, paddingBottom:50, marginLeft: 55}}
